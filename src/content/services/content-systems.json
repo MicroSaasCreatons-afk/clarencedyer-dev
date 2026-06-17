@@ -1,0 +1,14 @@
+{
+  "title": "Content Systems",
+  "icon": "\u270d\ufe0f",
+  "description": "Build a content engine that produces, repurposes, and publishes at scale without hiring a content team or burning out writers.",
+  "features": [
+    "AI content generation engines",
+    "Multi-platform repurposing workflows",
+    "Publishing and scheduling automation",
+    "Brand voice training",
+    "SEO content pipelines"
+  ],
+  "order": 4,
+  "featured": true
+}
