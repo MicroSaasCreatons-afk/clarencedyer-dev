@@ -1,0 +1,14 @@
+{
+  "title": "Custom SaaS Development",
+  "icon": "\ud83d\udee0\ufe0f",
+  "description": "From internal tools that automate your operations to client-facing portals and micro-SaaS products built to generate recurring revenue.",
+  "features": [
+    "Internal operational tools",
+    "Client-facing portals and dashboards",
+    "Micro SaaS product development",
+    "API design and integration",
+    "Scalable architecture and deployment"
+  ],
+  "order": 5,
+  "featured": true
+}
