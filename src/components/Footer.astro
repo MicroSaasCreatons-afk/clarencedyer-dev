@@ -1,0 +1,199 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <div class="nav-logo-icon">CD</div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-name">Clarence Dyer</span>
+            <span class="nav-logo-title">Fractional Chief AI Officer</span>
+          </div>
+        </a>
+        <p class="footer-desc">
+          Building AI systems that generate revenue, save time, and scale businesses. 300+ days. Solo build. Two live markets. Real results.
+        </p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/clarencedyer" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/clarencedyer" class="social-link" aria-label="Twitter / X" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://github.com/clarencedyer" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://youtube.com/@clarencedyer" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="/#services">Fractional CAIO</a></li>
+          <li><a href="/#services">Business Automation</a></li>
+          <li><a href="/#services">Content Systems</a></li>
+          <li><a href="/#services">AI SDR Systems</a></li>
+          <li><a href="/#services">Custom SaaS</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Work</h4>
+        <ul class="footer-links">
+          <li><a href="/#projects">Metro ATL Directory</a></li>
+          <li><a href="/#projects">Aaliyah + Milly Agents</a></li>
+          <li><a href="/#projects">Gaddis Sequencer</a></li>
+          <li><a href="/#projects">Lead Refinery</a></li>
+          <li><a href="/#projects">Refinery OS</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul class="footer-links">
+          <li><a href="/blog">Insights</a></li>
+          <li><a href="/#contact">Book a Call</a></li>
+          <li><a href="mailto:clarence@praxisadvisorsinc.com">clarence@praxisadvisorsinc.com</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© {year} Clarence Dyer. All rights reserved.</p>
+      <span class="footer-domain">clarencedyer.dev</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border-subtle);
+    padding: 64px 0 32px;
+    margin-top: 0;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  @media (min-width: 640px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .nav-logo-icon {
+    width: 40px; height: 40px;
+    background: var(--accent-orange);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 0.85rem; color: white;
+  }
+
+  .nav-logo-name {
+    display: block; font-weight: 700; font-size: 0.95rem;
+  }
+
+  .nav-logo-title {
+    display: block; font-size: 0.7rem;
+    color: var(--text-secondary); font-family: var(--font-mono);
+  }
+
+  .footer-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-subtle);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+  }
+  .social-link:hover {
+    background: rgba(249,115,22,0.1);
+    border-color: rgba(249,115,22,0.3);
+    color: var(--accent-orange);
+  }
+
+  .footer-col h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text-primary); }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  @media (min-width: 640px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .footer-domain {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+  }
+</style>
