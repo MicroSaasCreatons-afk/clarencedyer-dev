@@ -1,0 +1,14 @@
+{
+  "title": "Business Automation",
+  "icon": "\u26a1",
+  "description": "Eliminate manual, repetitive operations across your entire business stack from CRM updates to complex multi-system workflows.",
+  "features": [
+    "End-to-end process automation",
+    "CRM and pipeline integrations",
+    "Lead management systems",
+    "Data sync and transformation",
+    "Notification and reporting automations"
+  ],
+  "order": 2,
+  "featured": true
+}
