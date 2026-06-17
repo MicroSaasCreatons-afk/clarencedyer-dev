@@ -1,0 +1,14 @@
+{
+  "title": "Fractional CAIO Services",
+  "icon": "\ud83e\udde0",
+  "description": "Embedded Chief AI Officer without the full-time hire. I design your AI strategy, build the systems, and train your team to operate them.",
+  "features": [
+    "AI strategy and roadmap development",
+    "Custom AI agent architecture and build",
+    "Team AI training and adoption programs",
+    "Automation stack design and deployment",
+    "Ongoing AI system optimization"
+  ],
+  "order": 1,
+  "featured": true
+}
