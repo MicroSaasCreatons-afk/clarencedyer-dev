@@ -1,0 +1,14 @@
+{
+  "title": "AI SDR Systems",
+  "icon": "\ud83d\udce7",
+  "description": "Deploy an AI-powered sales development system that qualifies leads, crafts personalized outreach, and books meetings automatically.",
+  "features": [
+    "AI lead qualification and scoring",
+    "Personalized outreach automation",
+    "Multi-channel sequence management",
+    "Sales workflow optimization",
+    "Meeting booking and follow-up"
+  ],
+  "order": 3,
+  "featured": true
+}
