@@ -174,7 +174,7 @@ function statusLabel(status: string) {
       </header>
       <div class="blog-grid">
         {blogPosts.map((post: any) => (
-          <a href={`/blog/${post.slug}`} class="blog-card">
+          <a href={`/blog/${post.id}`} class="blog-card">
             <div class="blog-meta">
               <span class="blog-category">{post.data.category.replace(/-/g,' ')}</span>
               <span class="blog-date">{post.data.date}</span>
