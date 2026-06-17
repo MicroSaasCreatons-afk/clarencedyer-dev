@@ -1,0 +1,365 @@
+---
+export const prerender = true;
+
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const services = (await getCollection('services'))
+  .filter((s: any) => s.data.featured)
+  .sort((a: any, b: any) => (a.data.order ?? 1) - (b.data.order ?? 1));
+
+const projects = (await getCollection('projects'))
+  .sort((a: any, b: any) => (a.data.order ?? 1) - (b.data.order ?? 1));
+
+const blogPosts = (await getCollection('blog'))
+  .sort((a: any, b: any) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+const stats = [
+  { value: '2', label: 'Live AI Voice Agents' },
+  { value: '2,500+', label: 'Leads in AI Refinery' },
+  { value: '2', label: 'Live Directories Built' },
+  { value: '300+', label: 'Days Building Solo' },
+];
+
+function statusLabel(status: string) {
+  if (status === 'live') return '\u25cf Live';
+  if (status === 'building') return '\u25d0 Building';
+  return '\u2713 Completed';
+}
+---
+<Layout>
+  <Nav />
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>\u26a1</span>
+          <span>Fractional CAIO \u00b7 AI Systems Builder</span>
+        </div>
+        <h1 class="hero-title">
+          Building AI Systems That
+          <span class="gradient-text">Generate Revenue,</span>
+          Save Time, and Scale Businesses
+        </h1>
+        <p class="hero-subtitle">
+          I design and deploy AI agents, voice receptionists, lead generation systems,
+          automation workflows, and directory SaaS platforms — built from the ground up,
+          solo, in production, with real revenue.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Book a Strategy Call</a>
+          <a href="#projects" class="btn btn-secondary">View Projects &rarr;</a>
+        </div>
+        <div class="hero-stats">
+          {stats.map((stat, i) => (
+            <>
+              <div class="hero-stat-item">
+                <div class="hero-stat-number">{stat.value}</div>
+                <div class="hero-stat-label">{stat.label}</div>
+              </div>
+              {i < stats.length - 1 && <div class="hero-stat-divider"></div>}
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-left">
+        <div class="section-label">About Clarence Dyer</div>
+        <h2 class="section-title">From Ideas to <span class="gradient-text">Operating Systems</span></h2>
+        <p class="about-desc">
+          Over 300+ days, solo on a Chromebook, I designed and deployed two live AI-powered
+          directories, two autonomous voice agents, a cold email pipeline processing 2,500+ leads,
+          and a full automation stack — without a team, without investors, without quitting.
+        </p>
+        <p class="about-desc">
+          As a Fractional CAIO, I give organizations the AI operating layer they need without
+          the overhead of a full-time hire. Real systems. Real outcomes. Deployed, not demoed.
+        </p>
+        <a href="#contact" class="btn btn-primary" style="margin-top:24px">Book a Strategy Call</a>
+      </div>
+      <div class="about-right">
+        {[
+          { icon: '\ud83e\udde0', title: 'AI Agent Architecture', desc: 'Custom agents with tool integrations, memory, and goal-oriented behavior deployed in production.' },
+          { icon: '\u26a1', title: 'Business Process Automation', desc: 'End-to-end workflow automation across CRMs, APIs, and data pipelines that run without manual intervention.' },
+          { icon: '\ud83d\ude80', title: 'SaaS & Scalable Products', desc: 'Internal tools, client portals, and micro-SaaS platforms built for longevity and recurring revenue.' },
+        ].map(card => (
+          <div class="about-card">
+            <div class="about-card-icon">{card.icon}</div>
+            <div>
+              <div class="about-card-title">{card.title}</div>
+              <p class="about-card-desc">{card.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="alt-section">
+    <div class="container">
+      <header class="section-header">
+        <div class="section-label">What I Build</div>
+        <h2 class="section-title">AI-Powered Systems <span class="gradient-text">Across Every Layer</span></h2>
+      </header>
+      <div class="services-grid">
+        {services.map((service: any) => (
+          <article class="service-card">
+            <div class="service-icon">{service.data.icon}</div>
+            <h3 class="service-title">{service.data.title}</h3>
+            <p class="service-desc">{service.data.description}</p>
+            <ul class="service-features">
+              {service.data.features.map((f: string) => <li>{f}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:48px">
+        <a href="#contact" class="btn btn-primary">Discuss Your Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <header class="section-header">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Systems Built <span class="gradient-text">in the Real World</span></h2>
+      </header>
+      <div class="projects-grid">
+        {projects.map((project: any) => (
+          <article class={`project-card${project.data.featured ? ' featured' : ''}`}>
+            <div class="project-image">
+              <div class="project-image-icon">{project.data.icon}</div>
+              <span class="project-tag">{project.data.tag}</span>
+              <span class={`project-status status-${project.data.status}`}>{statusLabel(project.data.status)}</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">{project.data.title}</h3>
+              <p class="project-problem">// {project.data.problem}</p>
+              <p class="project-solution">{project.data.solution}</p>
+              <div class="project-outcome">
+                <span>\ud83d\udcc8</span>
+                <span class="project-outcome-text">{project.data.outcome}</span>
+              </div>
+              <div class="project-tech">
+                {project.data.techStack.map((t: string) => <span class="tech-pill">{t}</span>)}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+  <section id="blog" class="alt-section">
+    <div class="container">
+      <header class="section-header">
+        <div class="section-label">Insights</div>
+        <h2 class="section-title">Thinking Out Loud on <span class="gradient-text">AI & Systems</span></h2>
+      </header>
+      <div class="blog-grid">
+        {blogPosts.map((post: any) => (
+          <a href={`/blog/${post.slug}`} class="blog-card">
+            <div class="blog-meta">
+              <span class="blog-category">{post.data.category.replace(/-/g,' ')}</span>
+              <span class="blog-date">{post.data.date}</span>
+            </div>
+            <h3 class="blog-title">{post.data.title}</h3>
+            <p class="blog-excerpt">{post.data.excerpt}</p>
+            <span class="blog-link">Read Article &rarr;</span>
+          </a>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:48px">
+        <a href="/blog" class="btn btn-secondary">View All Insights &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <div class="container">
+      <h2>Ready to Build Something That Actually Works?</h2>
+      <p>Book a 30-minute strategy call to discuss your project and map out a clear path to results.</p>
+      <div class="cta-actions">
+        <a href="#contact" class="btn btn-white">Book a Strategy Call</a>
+        <a href="#projects" class="btn btn-outline-white">View Portfolio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container contact-grid">
+      <div class="contact-left">
+        <div class="section-label">Start a Project</div>
+        <h2 class="section-title">Let's Build Something <span class="gradient-text">Useful</span></h2>
+        <p class="contact-subtitle">Whether you need AI agents, automation systems, content engines, or a custom SaaS solution, let's talk about your project.</p>
+        <div class="contact-info">
+          {[
+            { icon: '\u23f1', label: 'Response Time', value: 'Within 24 hours' },
+            { icon: '\ud83d\udccd', label: 'Location', value: 'Alpharetta, GA \u2014 Remote-first' },
+            { icon: '\u2705', label: 'Currently Accepting', value: 'CAIO Engagements & Partnerships' },
+          ].map((item: any) => (
+            <div class="contact-info-item">
+              <div class="contact-info-icon">{item.icon}</div>
+              <div>
+                <div class="contact-info-label">{item.label}</div>
+                <div class="contact-info-value">{item.value}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="contact-form-wrapper">
+        <div class="form-title">Send a Message</div>
+        <form action="https://formspree.io/f/xwpkvqgb" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name *</label>
+              <input class="form-input" type="text" name="firstName" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name *</label>
+              <input class="form-input" type="text" name="lastName" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input class="form-input" type="email" name="email" placeholder="john@company.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company / Organization</label>
+            <input class="form-input" type="text" name="company" placeholder="Acme Corp" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service Interest *</label>
+            <select class="form-input" name="service" required>
+              <option value="" disabled selected>Select a service...</option>
+              <option value="caio">Fractional CAIO Services</option>
+              <option value="automation">Business Automation</option>
+              <option value="content">Content Systems</option>
+              <option value="sdr">AI SDR Systems</option>
+              <option value="saas">Custom SaaS Development</option>
+              <option value="consulting">Strategy Consulting</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Project Description *</label>
+            <textarea class="form-input" name="projectDesc" rows="4" placeholder="Describe your project and goals..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+          <p class="form-note">\ud83d\udd12 Your information is private and never shared.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+.hero { position:relative; min-height:100vh; display:flex; align-items:center; padding-top:72px; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% -10%, rgba(249,115,22,0.12) 0%, transparent 70%); }
+.hero-grid-overlay { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px); background-size:60px 60px; }
+.hero-container { position:relative; padding-top:48px; padding-bottom:80px; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(249,115,22,0.08); border:1px solid rgba(249,115,22,0.2); border-radius:100px; padding:6px 16px; font-size:0.78rem; font-weight:600; color:var(--accent-orange); margin-bottom:24px; }
+.hero-title { font-size:clamp(2rem,5vw,3.5rem); font-weight:900; line-height:1.1; letter-spacing:-0.02em; margin-bottom:20px; }
+.hero-subtitle { font-size:1.05rem; color:var(--text-secondary); line-height:1.7; max-width:540px; margin-bottom:32px; }
+.hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:48px; }
+.hero-stats { display:flex; flex-wrap:wrap; gap:24px; align-items:center; }
+.hero-stat-item { text-align:center; }
+.hero-stat-number { font-size:1.8rem; font-weight:900; line-height:1; }
+.hero-stat-label { font-size:0.72rem; color:var(--text-secondary); margin-top:4px; }
+.hero-stat-divider { width:1px; height:40px; background:var(--border-subtle); }
+
+.about-grid { display:grid; grid-template-columns:1fr; gap:64px; }
+@media(min-width:1024px){.about-grid{grid-template-columns:1fr 1fr;}}
+.about-desc { color:var(--text-secondary); margin-bottom:16px; line-height:1.8; }
+.about-card { display:flex; gap:16px; background:var(--bg-card); border:1px solid var(--border-card); border-radius:var(--radius); padding:20px; margin-bottom:16px; }
+.about-card:last-child{margin-bottom:0;}
+.about-card-icon { font-size:1.5rem; flex-shrink:0; }
+.about-card-title { font-weight:700; margin-bottom:6px; }
+.about-card-desc { font-size:0.85rem; color:var(--text-secondary); line-height:1.6; }
+
+.alt-section { background:rgba(255,255,255,0.01); }
+.services-grid { display:grid; grid-template-columns:1fr; gap:24px; }
+@media(min-width:640px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.services-grid{grid-template-columns:repeat(3,1fr);}}
+.service-card { background:var(--bg-card); border:1px solid var(--border-card); border-radius:var(--radius-lg); padding:32px; transition:border-color 0.2s,transform 0.2s; }
+.service-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-4px);}
+.service-icon{font-size:2rem;margin-bottom:16px;}
+.service-title{font-size:1.1rem;font-weight:700;margin-bottom:12px;}
+.service-desc{font-size:0.875rem;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;}
+.service-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.service-features li{font-size:0.82rem;color:var(--text-secondary);padding-left:16px;position:relative;}
+.service-features li::before{content:"\25b8";position:absolute;left:0;color:var(--accent-orange);font-size:0.65rem;top:2px;}
+
+.projects-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+@media(min-width:768px){.projects-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1200px){.projects-grid{grid-template-columns:repeat(3,1fr);}}
+.project-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);overflow:hidden;transition:border-color 0.2s,transform 0.2s;}
+.project-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-4px);}
+.project-image{position:relative;height:140px;background:linear-gradient(135deg,rgba(249,115,22,0.08),rgba(59,130,246,0.05));display:flex;align-items:center;justify-content:center;}
+.project-image-icon{font-size:2.5rem;}
+.project-tag{position:absolute;top:12px;left:12px;font-size:0.68rem;font-weight:600;background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);border:1px solid var(--border-card);border-radius:100px;padding:3px 10px;color:var(--text-secondary);}
+.project-status{position:absolute;top:12px;right:12px;font-size:0.68rem;font-weight:600;background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);border-radius:100px;padding:3px 10px;}
+.project-body{padding:20px;}
+.project-title{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.project-problem{font-size:0.72rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;}
+.project-solution{font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:12px;}
+.project-outcome{display:flex;gap:8px;background:rgba(249,115,22,0.05);border:1px solid rgba(249,115,22,0.15);border-radius:8px;padding:8px 12px;margin-bottom:12px;}
+.project-outcome-text{font-size:0.78rem;color:var(--text-secondary);line-height:1.5;}
+.project-tech{display:flex;flex-wrap:wrap;gap:6px;}
+
+.blog-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+@media(min-width:768px){.blog-grid{grid-template-columns:repeat(3,1fr);}}
+.blog-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);padding:24px;display:block;transition:border-color 0.2s,transform 0.2s;}
+.blog-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-4px);}
+.blog-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;}
+.blog-category{font-size:0.68rem;font-weight:700;text-transform:capitalize;color:var(--accent-orange);background:rgba(249,115,22,0.08);border-radius:100px;padding:2px 10px;}
+.blog-date{font-size:0.72rem;color:var(--text-muted);}
+.blog-title{font-size:1rem;font-weight:700;line-height:1.4;margin-bottom:10px;}
+.blog-excerpt{font-size:0.82rem;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;}
+.blog-link{font-size:0.82rem;font-weight:600;color:var(--accent-orange);}
+
+.cta-banner{background:linear-gradient(135deg,rgba(249,115,22,0.12),rgba(59,130,246,0.06));border-top:1px solid rgba(249,115,22,0.15);border-bottom:1px solid rgba(249,115,22,0.15);padding:80px 0;text-align:center;}
+.cta-banner h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:16px;}
+.cta-banner p{color:var(--text-secondary);max-width:500px;margin:0 auto 32px;}
+.cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+.btn-white{background:white;color:var(--bg-primary);}
+.btn-white:hover{background:rgba(255,255,255,0.9);}
+.btn-outline-white{background:transparent;color:white;border:1px solid rgba(255,255,255,0.3);}
+
+.contact-grid{display:grid;grid-template-columns:1fr;gap:64px;}
+@media(min-width:1024px){.contact-grid{grid-template-columns:1fr 1fr;}}
+.contact-subtitle{color:var(--text-secondary);line-height:1.7;margin-bottom:32px;margin-top:12px;}
+.contact-info{display:flex;flex-direction:column;gap:16px;}
+.contact-info-item{display:flex;align-items:flex-start;gap:12px;}
+.contact-info-icon{font-size:1.1rem;width:36px;height:36px;background:rgba(255,255,255,0.04);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-info-label{font-size:0.72rem;color:var(--text-muted);}
+.contact-info-value{font-size:0.9rem;font-weight:600;}
+.contact-form-wrapper{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);padding:32px;}
+.form-title{font-size:1.1rem;font-weight:700;margin-bottom:20px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{margin-bottom:16px;}
+.form-label{display:block;font-size:0.78rem;font-weight:600;color:var(--text-secondary);margin-bottom:6px;}
+.form-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border-card);border-radius:8px;padding:10px 14px;color:var(--text-primary);font-family:var(--font-sans);font-size:0.875rem;transition:border-color 0.2s;}
+.form-input:focus{outline:none;border-color:var(--accent-orange);}
+.form-note{font-size:0.72rem;color:var(--text-muted);text-align:center;margin-top:12px;}
+</style>
