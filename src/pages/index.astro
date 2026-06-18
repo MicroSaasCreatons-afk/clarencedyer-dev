@@ -25,9 +25,9 @@ const stats = [
 ];
 
 function statusLabel(status: string) {
-  if (status === 'live') return '\u25cf Live';
-  if (status === 'building') return '\u25d0 Building';
-  return '\u2713 Completed';
+  if (status === 'live') return '● Live';
+  if (status === 'building') return '◐ Building';
+  return '✓ Completed';
 }
 ---
 <Layout>
@@ -40,8 +40,8 @@ function statusLabel(status: string) {
     <div class="container hero-container">
       <div class="hero-content">
         <div class="hero-badge">
-          <span>\u26a1</span>
-          <span>Fractional CAIO \u00b7 AI Systems Builder</span>
+          <span>⚡</span>
+          <span>Fractional CAIO · AI Systems Builder</span>
         </div>
         <h1 class="hero-title">
           Building AI Systems That
@@ -91,9 +91,9 @@ function statusLabel(status: string) {
       </div>
       <div class="about-right">
         {[
-          { icon: '\ud83e\udde0', title: 'AI Agent Architecture', desc: 'Custom agents with tool integrations, memory, and goal-oriented behavior deployed in production.' },
-          { icon: '\u26a1', title: 'Business Process Automation', desc: 'End-to-end workflow automation across CRMs, APIs, and data pipelines that run without manual intervention.' },
-          { icon: '\ud83d\ude80', title: 'SaaS & Scalable Products', desc: 'Internal tools, client portals, and micro-SaaS platforms built for longevity and recurring revenue.' },
+          { icon: '🧠', title: 'AI Agent Architecture', desc: 'Custom agents with tool integrations, memory, and goal-oriented behavior deployed in production.' },
+          { icon: '⚡', title: 'Business Process Automation', desc: 'End-to-end workflow automation across CRMs, APIs, and data pipelines that run without manual intervention.' },
+          { icon: '🚀', title: 'SaaS & Scalable Products', desc: 'Internal tools, client portals, and micro-SaaS platforms built for longevity and recurring revenue.' },
         ].map(card => (
           <div class="about-card">
             <div class="about-card-icon">{card.icon}</div>
@@ -152,7 +152,7 @@ function statusLabel(status: string) {
               <p class="project-problem">// {project.data.problem}</p>
               <p class="project-solution">{project.data.solution}</p>
               <div class="project-outcome">
-                <span>\ud83d\udcc8</span>
+                <span>📈</span>
                 <span class="project-outcome-text">{project.data.outcome}</span>
               </div>
               <div class="project-tech">
@@ -212,9 +212,9 @@ function statusLabel(status: string) {
         <p class="contact-subtitle">Whether you need AI agents, automation systems, content engines, or a custom SaaS solution, let's talk about your project.</p>
         <div class="contact-info">
           {[
-            { icon: '\u23f1', label: 'Response Time', value: 'Within 24 hours' },
-            { icon: '\ud83d\udccd', label: 'Location', value: 'Alpharetta, GA \u2014 Remote-first' },
-            { icon: '\u2705', label: 'Currently Accepting', value: 'CAIO Engagements & Partnerships' },
+            { icon: '⏱', label: 'Response Time', value: 'Within 24 hours' },
+            { icon: '📍', label: 'Location', value: 'Alpharetta, GA — Remote-first' },
+            { icon: '✅', label: 'Currently Accepting', value: 'CAIO Engagements & Partnerships' },
           ].map((item: any) => (
             <div class="contact-info-item">
               <div class="contact-info-icon">{item.icon}</div>
@@ -274,7 +274,7 @@ function statusLabel(status: string) {
             <textarea class="form-input" name="projectDesc" rows="4" placeholder="Describe your project and goals..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
-          <p class="form-note">\ud83d\udd12 Your information is private and never shared.</p>
+          <p class="form-note">🔒 Your information is private and never shared.</p>
         </form>
       </div>
     </div>
