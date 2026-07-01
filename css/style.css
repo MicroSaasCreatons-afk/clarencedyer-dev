@@ -2010,3 +2010,32 @@ footer {
   .hero-actions .btn:last-child { width: auto; }
   .process-steps { grid-template-columns: 1fr; }
 }
+
+/* Merged: Services & Rates + Process */
+.rates{ background:#0f1424; border-top:1px solid #232b45; border-bottom:1px solid #232b45; padding:96px 0; }
+.rates .rates-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.rate-card{ background:#131a2e; border:1px solid #232b45; border-radius:14px; padding:32px 28px; display:flex; flex-direction:column; position:relative; transition:border-color .25s ease, transform .25s ease; }
+.rate-card:hover{ transform:translateY(-4px); border-color:#8b6ff0; }
+.rate-card.featured{ border-color:#8b6ff0; box-shadow:0 0 0 1px #8b6ff0, 0 20px 60px rgba(139,111,240,0.15); }
+.rate-badge{ position:absolute; top:-13px; left:28px; background:linear-gradient(135deg,#8b6ff0,#5eb0ef); color:#fff; font-family:'JetBrains Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em; padding:5px 12px; border-radius:999px; font-weight:600; }
+.rate-name{ font-family:'Source Serif 4',Georgia,serif; font-size:1.3rem; color:#fff; margin-bottom:8px; }
+.rate-desc{ color:#8891ab; font-size:0.9rem; min-height:3.2em; margin-bottom:16px; }
+.rate-price{ font-family:'Source Serif 4',Georgia,serif; font-size:2rem; font-weight:700; color:#fff; margin-bottom:4px;}
+.rate-period{ font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#8891ab; margin-bottom:20px; display:block;}
+.rate-features{ list-style:none; flex-grow:1; margin-bottom:24px; }
+.rate-features li{ font-size:0.88rem; color:#8891ab; padding:8px 0 8px 22px; border-top:1px solid #232b45; position:relative; }
+.rate-features li:first-child{ border-top:none; }
+.rate-features li::before{ content:"→"; position:absolute; left:0; color:#a78bfa; font-family:'JetBrains Mono',monospace; }
+.rate-cta{ display:block; text-align:center; padding:12px; border-radius:8px; font-weight:600; font-size:0.9rem; text-decoration:none; border:1px solid #232b45; color:#e8ebf5; transition:all .2s ease; }
+.rate-card.featured .rate-cta{ background:linear-gradient(135deg,#8b6ff0,#5eb0ef); border-color:transparent; color:#fff; }
+.rate-cta:hover{ border-color:#a78bfa; }
+.rates-note{ text-align:center; margin-top:40px; color:#8891ab; font-size:0.82rem; }
+
+#process{ background:#0a0e1a; padding:96px 0; }
+.process-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
+.pstep{ position:relative; }
+.pstep:not(:first-child)::before{ content:""; position:absolute; top:23px; right:calc(100% - 8px); width:calc(100% - 16px); height:1px; background:linear-gradient(90deg,#232b45,#8b6ff0 50%,#232b45); opacity:.5; }
+.pstep-num{ font-family:'JetBrains Mono',monospace; width:46px; height:46px; border-radius:50%; background:#131a2e; border:1px solid #232b45; display:flex; align-items:center; justify-content:center; font-weight:600; color:#a78bfa; margin-bottom:20px; position:relative; z-index:1; }
+.pstep-eyebrow{ font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#8891ab; text-transform:uppercase; letter-spacing:0.08em; }
+.pstep h3{ font-family:'Source Serif 4',Georgia,serif; color:#fff; font-size:1.1rem; margin:8px 0 8px; }
+.pstep p{ color:#8891ab; font-size:0.9rem; }
