@@ -165,6 +165,83 @@ function statusLabel(status: string) {
     </div>
   </section>
 
+  <!-- RATES -->
+  <section id="rates" class="alt-section">
+    <div class="container">
+      <header class="section-header">
+        <div class="section-label">Services & Rates</div>
+        <h2 class="section-title">Three ways to <span class="gradient-text">work together</span></h2>
+      </header>
+      <div class="rates-grid">
+        <div class="rate-card">
+          <div class="rate-name">Starter Build</div>
+          <p class="rate-desc">One system, proven fast.</p>
+          <div class="rate-price">$12,000</div>
+          <span class="rate-period">/ project</span>
+          <ul class="rate-features">
+            <li>1 automation or AI agent build</li>
+            <li>Process mapping & readiness review</li>
+            <li>Integration with 1–2 systems</li>
+            <li>4 weeks post-launch support</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Scope a Project</a>
+        </div>
+        <div class="rate-card featured">
+          <div class="rate-badge">Most Popular</div>
+          <div class="rate-name">Growth Partner</div>
+          <p class="rate-desc">Ongoing build-out, dedicated hand on the wheel.</p>
+          <div class="rate-price">$8,500</div>
+          <span class="rate-period">/ month · 6-mo min</span>
+          <ul class="rate-features">
+            <li>Up to 4 automations</li>
+            <li>1–2 custom AI agents</li>
+            <li>Core system integrations</li>
+            <li>Monthly optimization cycles</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Call</a>
+        </div>
+        <div class="rate-card">
+          <div class="rate-name">Fractional CAIO</div>
+          <p class="rate-desc">Embedded AI leadership.</p>
+          <div class="rate-price">Custom</div>
+          <span class="rate-period">starting at $25,000/mo</span>
+          <ul class="rate-features">
+            <li>Unlimited scope</li>
+            <li>Cross-functional delivery</li>
+            <li>Governance & security review</li>
+            <li>Dedicated escalation lead</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Discuss a Program</a>
+        </div>
+      </div>
+      <p class="rates-note">Pricing shown is illustrative; every proposal is confirmed in writing after discovery.</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <header class="section-header">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">From discovery call to <span class="gradient-text">live system</span></h2>
+      </header>
+      <div class="process-steps">
+        {[
+          { n: '1', title: 'Discovery', desc: 'A focused call on where manual work is piling up and whether automation moves the needle.' },
+          { n: '2', title: 'Assessment', desc: 'Audit target workflows and systems, then hand back a prioritized build roadmap.' },
+          { n: '3', title: 'Build', desc: 'Automations and agents built and integrated directly into your existing stack.' },
+          { n: '4', title: 'Optimize', desc: 'Ongoing tuning as conditions change — results compound instead of decaying.' },
+        ].map(step => (
+          <div class="pstep">
+            <div class="pstep-num">{step.n}</div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- BLOG PREVIEW -->
   <section id="blog" class="alt-section">
     <div class="container">
@@ -372,4 +449,26 @@ function statusLabel(status: string) {
 .form-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border-card);border-radius:8px;padding:10px 14px;color:var(--text-primary);font-family:var(--font-sans);font-size:0.875rem;transition:border-color 0.2s;}select.form-input{background:#0f1e30;color:#fff;}select.form-input option{background:#0f1e30;color:#fff;}
 .form-input:focus{outline:none;border-color:var(--accent-orange);}
 .form-note{font-size:0.72rem;color:var(--text-muted);text-align:center;margin-top:12px;}
+
+.rates-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+@media(min-width:1024px){.rates-grid{grid-template-columns:repeat(3,1fr);}}
+.rate-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:var(--radius-lg);padding:32px;position:relative;display:flex;flex-direction:column;transition:border-color 0.2s,transform 0.2s;}
+.rate-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-4px);}
+.rate-card.featured{border-color:var(--accent-orange);}
+.rate-badge{position:absolute;top:-13px;left:28px;background:var(--accent-orange);color:#fff;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;padding:5px 12px;border-radius:100px;font-weight:700;}
+.rate-name{font-size:1.15rem;font-weight:700;margin-bottom:8px;}
+.rate-desc{color:var(--text-secondary);font-size:0.85rem;min-height:2.6em;margin-bottom:16px;}
+.rate-price{font-size:1.9rem;font-weight:800;margin-bottom:2px;}
+.rate-period{font-size:0.75rem;color:var(--text-muted);display:block;margin-bottom:20px;}
+.rate-features{list-style:none;flex-grow:1;margin-bottom:24px;}
+.rate-features li{font-size:0.85rem;color:var(--text-secondary);padding:8px 0 8px 20px;border-top:1px solid var(--border-subtle);position:relative;}
+.rate-features li:first-child{border-top:none;}
+.rate-features li::before{content:"\25b8";position:absolute;left:0;color:var(--accent-orange);}
+.rates-note{text-align:center;margin-top:32px;color:var(--text-muted);font-size:0.8rem;}
+
+.process-steps{display:grid;grid-template-columns:1fr;gap:32px;}
+@media(min-width:768px){.process-steps{grid-template-columns:repeat(4,1fr);}}
+.pstep-num{font-family:var(--font-mono);width:44px;height:44px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border-card);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent-orange);margin-bottom:16px;}
+.pstep h3{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.pstep p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6;}
 </style>
